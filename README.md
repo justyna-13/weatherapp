@@ -1,6 +1,6 @@
 # WeatherApp
-> The WeatherApp, one of the best weather application on store, one of the best choose fore you.
-Find accurate weather information for anytime and everywhere!
+> The WeatherApp, one of the best weather applications worldwide, one of the best choices for you.
+Find accurate weather information for any time and everywhere!
 
 ## Table of contents
 * [General info](#general-info)
