@@ -18,7 +18,7 @@ header {
 
 main {
     display: grid;
-    grid-template: 2fr 3fr / 2fr 4fr;
+    grid-template: 1fr 2fr / 2fr 4fr;
     width: 100%;
 }
 
@@ -27,7 +27,7 @@ main {
     grid-area: 1 / 1 / 2 / 3;
     background-image: linear-gradient(rgba(235, 151, 200, 0.521),
         rgba(136, 25, 71, 0.904)),
-        url(/images/fr.jpg);
+        url(images/fr.jpg);
     background-position: 40%;
     filter: grayscale(50%);
 
@@ -36,7 +36,7 @@ main {
 .right {
     background-image: linear-gradient(45deg, rgba(11, 11, 34, 0.959),
         rgba(66, 59, 126, 0.658)),
-        url(/images/background-image.jpg);
+        url(images/background-image.jpg);
     background-position: center;
     filter: grayscale(50%);
     grid-area: 2 / 2 / 3 / 3;
@@ -46,7 +46,7 @@ main {
     grid-area: 2 / 1 / 3 / 2;
     background-image: linear-gradient(rgba(114, 27, 88, 0.959),
         rgba(124, 45, 111, 0.658)),
-        url(/images/paris.jpg);
+        url(images/paris.jpg);
     background-position: 40%;
     filter: grayscale(50%);
 }
