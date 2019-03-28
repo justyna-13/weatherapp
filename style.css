@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background: rgb(71, 3, 62);
+    background: rgb(53, 28, 49);
     min-width: 70px
 }
 
@@ -50,6 +50,42 @@ main {
         url(images/paris.jpg);
     background-position: 40%;
     filter: grayscale(50%);
+}
+
+/*Left bar*/
+nav {
+    height: 70%;
+}
+
+.icons {
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+height: 100%;
+}
+
+.icon {
+    color: rgba(255, 255, 255, 0.719);
+    position: relative;
+    left: 30%;
+    transition-duration: 0.25s;
+}
+
+.fa-home.icon,
+.fa-cloud.icon {
+    color: rgba(255, 255, 255, 0.719);
+    position: relative;
+    left: 25%;
+}
+
+.fa-bars.icon {
+    color: rgba(233, 203, 37, 0.76);
+}
+
+.icon:hover{
+    color: rgba(233, 203, 37, 0.76) !important;
+    transform: scale(1.07);
+    cursor: pointer;
 }
 
 @media (max-width: 750px) {
