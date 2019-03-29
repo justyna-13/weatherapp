@@ -30,7 +30,8 @@ main {
         url(images/fr.jpg);
     background-position: 40%;
     filter: grayscale(50%);
-
+    display: grid;
+    grid-template-rows: 2fr 1fr;
 }
 
 .right {
