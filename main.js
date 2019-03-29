@@ -7,6 +7,25 @@ const currentWeatherWro = async () => {
     }
 }
 
+const forecastWro = async () => {
+    try {
+        const dataResponse = await fetch("http://api.openweathermap.org/data/2.5/forecast?q=Wroclaw,pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
+        return dataResponse.json();
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const forecastWroDisplay = async () => {
+    try {
+        const dataObj = await forecastWro();
+        
+        console.log(dataObj);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 const currentWeatherWroDisplay = async () => {
     try {
         const dataObj = await currentWeatherWro();
@@ -63,3 +82,4 @@ const currentWeatherWroDisplay = async () => {
 }
 
 currentWeatherWroDisplay();
+forecastWroDisplay();
