@@ -13,7 +13,7 @@ body {
 
 header {
     background: rgb(53, 28, 49);
-    min-width: 70px
+    min-width: 55px;
 }
 
 main {
@@ -53,7 +53,7 @@ main {
 
 /*Left bar*/
 nav {
-    height: 70%;
+    height: 40%;
 }
 
 .icons {
@@ -66,7 +66,7 @@ height: 100%;
 .icon {
     color: rgba(255, 255, 255, 0.719);
     position: relative;
-    left: 30%;
+    left: 40%;
     transition-duration: 0.25s;
 }
 
@@ -74,7 +74,7 @@ height: 100%;
 .fa-cloud.icon {
     color: rgba(255, 255, 255, 0.719);
     position: relative;
-    left: 25%;
+    left: 36%;
 }
 
 .fa-bars.icon {
