@@ -13,6 +13,8 @@ const currentWeatherWroDisplay = async () => {
 
         console.log(dataObj);
 
+        console.log(`Wyświetlam pogodę dla: ${dataObj.name}, ${dataObj.sys.country}`);
+        console.log(`Moment pobrania danych: ${dataObj.dt} unix UTC`); /* konwersja z unix do normalnej godziny? */
         console.log(`Temperatura: ${dataObj.main.temp}°C`);
         console.log(`Ciśnienie atmosfetyczne: ${dataObj.main.pressure}hPa`);
         console.log(`Wilgotność: ${dataObj.main.humidity}%`);
@@ -20,6 +22,9 @@ const currentWeatherWroDisplay = async () => {
         console.log(`Temperatura maksymalna: ${dataObj.main.temp_max}°C`);
         console.log(`Prędkość wiatru: ${dataObj.wind.speed}m/s`);
         console.log(`Zachmurzenie: ${dataObj.clouds.all}%`);
+
+        console.log(`Typ pogody: ${dataObj.weather[0].main}`);
+        console.log(`Opis: ${dataObj.weather[0].description}`);
 
         let rain1h;
         try {
@@ -36,6 +41,22 @@ const currentWeatherWroDisplay = async () => {
             rain3h = 0;
         }
         console.log(`Opady deszczu przez ostatnie 3 godziny: ${rain3h}mm`);
+
+        let snow1h;
+        try {
+            snow1h = dataObj.snow["1h"];
+        } catch (err3) {
+            snow1h = 0;
+        }
+        console.log(`Opady śniegu przez ostatnią godzinę: ${snow1h}mm`);
+
+        let snow3h;
+        try {
+            snow3h = dataObj.snow["3h"];
+        } catch (err4) {
+            snow3h = 0;
+        }
+        console.log(`Opady śniegu przez ostatnie 3 godziny: ${snow3h}mm`);
     } catch (err0) {
         console.log(err0);
     }
