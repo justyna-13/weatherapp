@@ -40,6 +40,13 @@ main {
     background-position: center;
     filter: grayscale(50%);
     grid-area: 2 / 2 / 3 / 3;
+    }
+
+#paragraph {
+    font-size: 10px;
+    font-family:'Arial', sans-serif;
+    color:white;
+    padding:20px;
 }
 
 .left {
@@ -63,3 +70,5 @@ main {
         width: 100%;
     }
 }
+/*paragraphs in right container*/
+
