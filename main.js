@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const currentWeatherWro = async () => {
     try {
         const dataRespsonse = await fetch("http://api.openweathermap.org/data/2.5/weather?q=Wroclaw,pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
@@ -84,8 +83,6 @@ const currentWeatherWroDisplay = async () => {
 
 currentWeatherWroDisplay();
 forecastWroDisplay();
-=======
->>>>>>> 351060d65ec650ce5cf923306311f03f89583c4f
 /*Left bar*/
 function iconClick(e) {
     if (e.target.getAttribute("id") === "icon"){
@@ -96,8 +93,4 @@ function iconClick(e) {
         }
 }
 
-<<<<<<< HEAD
 document.addEventListener("click", iconClick, false);
-=======
-document.addEventListener("click", iconClick, false);
->>>>>>> 351060d65ec650ce5cf923306311f03f89583c4f
