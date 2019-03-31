@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Montserrat,
+        sans-serif;
 }
 
 body {
@@ -29,16 +33,103 @@ main {
         rgba(136, 25, 71, 0.904)),
         url(images/fr.jpg);
     background-position: 40%;
+    background-size: cover;
+    background-repeat: no-repeat;
     filter: grayscale(50%);
     display: grid;
     grid-template-rows: 2fr 1fr;
 }
+
+.header-icons {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
+}
+
+.city-icone {
+    display: grid;
+    grid-template: 1fr 0.5fr 1fr 1fr / 1fr 1fr;
+    grid-column-gap: 15px;
+    width: 200px;
+    margin: 20px 15px 0 15px;
+    filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.1));
+    transition: all ease-in-out .3s;
+    cursor: pointer;
+}
+
+.city-icone:hover {
+    transform: scale(1.1);
+}
+
+.img {
+    grid-area: 1 / 1 / -1 / 1;
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    -webkit-clip-path: polygon(50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.krk {
+    background-image: url(images/krakow.jpg);
+}
+
+.wawa {
+    background-image: url(images/warsaw.jpg);
+}
+
+.wro {
+    background-image: url(images/wrocaw.jpg);
+}
+
+.gda {
+    background-image: url(images/gdansk.jpg);
+}
+
+.poz {
+    background-image: url(images/poznan.jpg);
+}
+
+.img: {
+    background-image: url(images/warsaw.jpg);
+
+}
+
+p:first-of-type {
+    grid-area: 1 /2 / 1 / 2;
+    color: whitesmoke;
+    font-size: 1.2rem;
+    margin-top: 8px;
+
+}
+
+p:nth-of-type(2) {
+    grid-area: 2 /2 / 2 / 2;
+    color: rgb(242, 255, 123);
+    font-size: 0.9rem;
+    padding-bottom: 0;
+}
+
+p:nth-of-type(3) {
+    grid-area: 3 /2 / 3 / 2;
+    color: whitesmoke;
+    font-size: 2rem;
+}
+
 
 .right {
     background-image: linear-gradient(45deg, rgba(11, 11, 34, 0.959),
         rgba(66, 59, 126, 0.658)),
         url(images/background-image.jpg);
     background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     filter: grayscale(50%);
     grid-area: 2 / 2 / 3 / 3;
 }
@@ -49,6 +140,8 @@ main {
         rgba(124, 45, 111, 0.658)),
         url(images/paris.jpg);
     background-position: 40%;
+    background-repeat: no-repeat;
+    background-size: cover;
     filter: grayscale(50%);
 }
 
@@ -58,10 +151,10 @@ nav {
 }
 
 .icons {
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
 }
 
 .icon {
@@ -82,7 +175,7 @@ height: 100%;
     color: rgba(233, 203, 37, 0.76);
 }
 
-.icon:hover{
+.icon:hover {
     color: rgba(233, 203, 37, 0.76) !important;
     transform: scale(1.07);
     cursor: pointer;
