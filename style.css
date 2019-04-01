@@ -181,6 +181,64 @@ nav {
     cursor: pointer;
 }
 
+/*Header - panel below icons*/
+.header-inputs {
+    text-align: center;
+
+}
+
+.region{
+    color: rgba(255, 255, 255, 0.74);
+}
+
+select{
+    background-color: rgba(128, 128, 128, 0.541);
+    color: white;
+    text-align: center;
+    border: none;
+    padding: 4px;
+    margin: 5px;
+    padding-right: 15px;
+    -webkit-appearance: none;
+}
+
+select * {
+    background-color: rgba(66, 25, 77, 0.466);
+    color: rgba(255, 255, 255, 0.74);
+    border: none;
+}
+
+.search{
+    background-color: rgba(128, 128, 128, 0.541);
+    color: rgba(255, 255, 255, 0.76);
+    text-align: center;
+    border: none;
+    padding: 6px;
+    padding-left: 80px;
+    padding-right: 80px;
+    transition: 0.4s;
+}
+
+.search:hover {
+    background-color: rgba(128, 128, 128, 0.541);
+    color: rgba(255, 255, 255, 0.76);
+    text-align: center;
+    border: none;
+    padding: 6px;
+    padding-left: 80px;
+    padding-right: 80px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.arrow{
+    color: yellow;
+    position: relative;
+    right: 30px;
+    top: 2px;
+    z-index: -1;
+}
+
 @media (max-width: 750px) {
     body {
         display: flex;
