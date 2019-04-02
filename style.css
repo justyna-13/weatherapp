@@ -96,10 +96,10 @@ main {
     background-image: url(images/poznan.jpg);
 }
 
-.img: {
+/* .img: {
     background-image: url(images/warsaw.jpg);
 
-}
+} */
 
 p:first-of-type {
     grid-area: 1 /2 / 1 / 2;
@@ -143,6 +143,8 @@ p:nth-of-type(3) {
     background-repeat: no-repeat;
     background-size: cover;
     filter: grayscale(50%);
+    display: grid;
+    grid-template-rows: 3fr 2fr;
 }
 
 /*Left bar*/
