@@ -147,6 +147,68 @@ p:nth-of-type(3) {
     grid-template-rows: 3fr 2fr;
 }
 
+.left-forecast-wrapper {
+    margin-top: 20px;
+    height: calc(100% - 20px);
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 2fr;
+    grid-template-columns: 3fr 2fr;
+}
+
+.left-forecast-wrapper p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.left-forecast-weekday {
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    align-items: center;
+    padding-right: 10px;
+    font-weight: 600;
+}
+
+.left-forecast-wrapper .left-forecast-weekday-text {
+    color: hsl(340, 100%, 80%);
+}
+
+.left-forecast-info {
+    display: grid;
+    grid-template-columns: 30px 30px 1fr;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.left-forecast-wrapper .left-forecast-info-text {
+    color: hsl(0, 0%, 70%);
+    grid-area: auto;
+}
+
+.left-forecast-bottom {
+    grid-area: 5 / 1 / -1 / -1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-forecast-wrapper .left-forecast-bottom-text a {
+    color: gold;
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+
+.left-forecast-bottom-text i {
+    display: block;
+    transition: all 0.5s ease-in-out;
+}
+
+.left-forecast-wrapper .left-forecast-bottom-text a:hover i{
+    transform: rotateX(180deg);
+    font-size: 1.95rem;
+}
+
 /*Left bar*/
 nav {
     height: 40%;
