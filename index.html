@@ -30,31 +30,31 @@
   <main>
     <article class="header">
       <div class="header-icons">
-        <div class="city-icone">
+        <div class="city-icone" id="krk">
           <div class="img krk"></div>
           <p class="city-name">Kraków</p>
           <p class="word">Sunny</p>
           <p class="deg">32c</p>
         </div>
-        <div class="city-icone">
+        <div class="city-icone" id="wwa">
           <div class="img wawa"></div>
           <p class="city-name">Warszawa</p>
           <p class="word">Sunny</p>
           <p class="deg">30c</p>
         </div>
-        <div class="city-icone">
+        <div class="city-icone" id="wro">
           <div class="img wro"></div>
           <p class="city-name">Wrocław</p>
           <p class="word">Cloudy</p>
           <p class="deg">25c</p>
         </div>
-        <div class="city-icone">
+        <div class="city-icone" id="gda">
           <div class="img gda"></div>
           <p class="city-name">Gdańsk</p>
           <p class="word">Sunset</p>
           <p class="deg">19c</p>
         </div>
-        <div class="city-icone">
+        <div class="city-icone" id="poz">
           <div class="img poz"></div>
           <p class="city-name">Poznań</p>
           <p class="word">Sunny</p>
@@ -100,63 +100,58 @@
     </article>
     <article class="left">
       <div class="left-place-weather">
-        <h1>Wrocław, Polska</h1>
-        <p>09:30am</p>
-        <p>30 May</p>
-        <p>Thursday</p>
-        <i class="fas fa-sun"></i>
-        <p>31C</p>
+        <h1 id='left-currentweather-place'>loading...</h1>
+        <p id='left-currentweather-hour'>loading...</p>
+        <p id='left-currentweather-date'>loading...</p>
+        <p id='left-currentweather-weekday'>loading...</p>
+        <img id='left-currentweather-icon'>
+        <p id='left-currrentweather-temp'>loading...</p>
       </div>
       <div class="left-forecast">
         <div class="left-forecast-wrapper">
           <div class="left-forecast-weekday">
             <p class="left-forecast-weekday-text">
-              <span class="left-forecast-weekday-day" id="lfwday1">Tuesday</span>
+              <span class="left-forecast-weekday-day" id="lfwday1">loading...</span>
             </p>
           </div>
           <div class="left-forecast-info">
-            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp1left">33</span></p>
-            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp1right">26</span></p>
-            <p class="left-forecast-info-text"><span class="left-forecast-info-icon" id="lfiicon1"><i
-                  class="icon-cloud"></i></span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp1left">...</span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp1right">...</span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-icon" id="lfiicon1"><img></span></p>
           </div>
           <div class="left-forecast-weekday">
             <p class="left-forecast-weekday-text">
-              <span class="left-forecast-weekday-day" id="lfwday2">Wednesday</span>
+              <span class="left-forecast-weekday-day" id="lfwday2">loading...</span>
             </p>
           </div>
           <div class="left-forecast-info">
-            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp2left">34</span></p>
-            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp2right">28</span></p>
-            <p class="left-forecast-info-text"><span class="left-forecast-info-icon" id="lfiicon2"><i
-                  class="icon-cloud-sun"></i></span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp2left">...</span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp2right">...</span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-icon" id="lfiicon2"><img></span></p>
           </div>
           <div class="left-forecast-weekday">
             <p class="left-forecast-weekday-text">
-              <span class="left-forecast-weekday-day" id="lfwday3">Thursday</span>
+              <span class="left-forecast-weekday-day" id="lfwday3">loading...</span>
             </p>
           </div>
           <div class="left-forecast-info">
-            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp3left">32</span></p>
-            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp3right">25</span></p>
-            <p class="left-forecast-info-text"><span class="left-forecast-info-icon" id="lfiicon3"><i
-                  class="icon-rain"></i></span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp3left">...</span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp3right">...</span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-icon" id="lfiicon3"><img></span></p>
           </div>
           <div class="left-forecast-weekday">
             <p class="left-forecast-weekday-text">
-              <span class="left-forecast-weekday-day" id="lfwday4">Friday</span>
+              <span class="left-forecast-weekday-day" id="lfwday4">loading...</span>
             </p>
           </div>
           <div class="left-forecast-info">
-            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp4left">35</span></p>
-            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp4right">24</span></p>
-            <p class="left-forecast-info-text"><span class="left-forecast-info-icon" id="lfiicon4"><i
-                  class="icon-clouds-flash-alt"></i></span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp4left">...</span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-temp" id="lfitemp4right">...</span></p>
+            <p class="left-forecast-info-text"><span class="left-forecast-info-icon" id="lfiicon4"><img></span></p>
           </div>
           <div class="left-forecast-bottom">
             <p class="left-forecast-bottom-text">
-              <span class="left-forecast-bottom-icon" id="lfbicon"><a href="#"><i
-                    class="icon-angle-left"></i></a></span>
+              <span class="left-forecast-bottom-icon" id="lfbicon"><a href="#"><i class="icon-angle-left"></i></a></span>
             </p>
           </div>
         </div>
