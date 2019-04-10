@@ -284,6 +284,11 @@ p:nth-of-type(3) {
     font-size: 1.95rem;
 }
 
+.left-forecast-info-icon img {
+    width: 40px;
+    height: 40px;
+}
+
 /*Left bar*/
 nav {
     height: 40%;

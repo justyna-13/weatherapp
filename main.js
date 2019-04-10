@@ -58,6 +58,10 @@ document.addEventListener("click", iconClick, false);
 let currentCity = 'Wroclaw'
 let currentCityWeatherNow; // <-- feel free to use that :D
 let currentCityWeatherForecast; // <-- feel free to use that :D
+let next1dayForecastArray = []; // <-- feel free to use that :D
+let next2dayForecastArray = []; // <-- feel free to use that :D
+let next3dayForecastArray = []; // <-- feel free to use that :D
+let next4dayForecastArray = []; // <-- feel free to use that :D
 
 const iconDivsArray = Array.from(document.getElementsByClassName('city-icone'));
 
@@ -83,9 +87,18 @@ function changeCity() {
             console.log('?');
             break;
     }
-    getWeatherNow();
-    getWeatherForecast();
-    setTimeout(leftContainerInject, 3000); //temporary
+    next1dayForecastArray = [];
+    next2dayForecastArray = [];
+    next3dayForecastArray = [];
+    next4dayForecastArray = [];
+    Promise.all([getWeatherNow(), getWeatherForecast()])
+        .then(() => {
+            leftContainerInject();
+            // add here
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 }
 
 function markCity() {
@@ -137,12 +150,15 @@ const leftContainerInject = () => {
     const date = new Date();
 
     let minute = date.getMinutes();
+    let hour = date.getHours();
     let month = date.getMonth();
     let weekday = date.getDay();
     let next1day;
     let next2day;
     let next3day;
     let next4day;
+
+    let startIndex;
 
     switch(weekday) {
         case 1:
@@ -200,7 +216,7 @@ const leftContainerInject = () => {
     month = monthNumberToName(month);
 
     document.getElementById('left-currentweather-place').innerText = `${currentCity}, Polska`;
-    document.getElementById('left-currentweather-hour').innerText = `${date.getHours()}:${minute}`;
+    document.getElementById('left-currentweather-hour').innerText = `${hour}:${minute}`;
     document.getElementById('left-currentweather-date').innerText = `${date.getDate()} ${month}`;
     document.getElementById('left-currentweather-weekday').innerText = weekday;
     document.getElementById('left-currentweather-icon').setAttribute('src', `http://openweathermap.org/img/w/${currentCityWeatherNow.weather[0].icon}.png`);
@@ -210,6 +226,54 @@ const leftContainerInject = () => {
     document.getElementById('lfwday3').innerText = next3day;
     document.getElementById('lfwday4').innerText = next4day;
 
+    if(hour >= 0 && hour < 3) {
+        startIndex = 7;
+    } else if(hour >=3 && hour < 6) {
+        startIndex = 6;
+    } else if(hour >= 6 && hour < 9) {
+        startIndex = 5;
+    } else if(hour >= 9 && hour < 12) {
+        startIndex = 4
+    } else if(hour >= 12 && hour < 15) {
+        startIndex = 3
+    } else if(hour >= 15 && hour < 18) {
+        startIndex = 2;
+    } else if(hour >= 18 && hour < 21) {
+        startIndex = 1;
+    } else if(hour >= 21 && hour < 24) {
+        startIndex = 0;
+    }
+
+    for(let i = startIndex; i <= startIndex + 7; i++) {
+        next1dayForecastArray.push(currentCityWeatherForecast.list[i]);
+    }
+
+    for(let i = startIndex + 8; i <= startIndex + 15; i++) {
+        next2dayForecastArray.push(currentCityWeatherForecast.list[i]);
+    }
+
+    for(let i = startIndex + 16; i <= startIndex + 23; i++) {
+        next3dayForecastArray.push(currentCityWeatherForecast.list[i]);
+    }
+
+    for(let i = startIndex + 24; i <= startIndex + 31; i++) {
+        next4dayForecastArray.push(currentCityWeatherForecast.list[i]);
+    }
+
+    document.getElementById('lfitemp1left').innerText = dayArrayMaxTemp(next1dayForecastArray);
+    document.getElementById('lfitemp2left').innerText = dayArrayMaxTemp(next2dayForecastArray);
+    document.getElementById('lfitemp3left').innerText = dayArrayMaxTemp(next3dayForecastArray);
+    document.getElementById('lfitemp4left').innerText = dayArrayMaxTemp(next4dayForecastArray);
+
+    document.getElementById('lfitemp1right').innerText = dayArrayMinTemp(next1dayForecastArray);
+    document.getElementById('lfitemp2right').innerText = dayArrayMinTemp(next2dayForecastArray);
+    document.getElementById('lfitemp3right').innerText = dayArrayMinTemp(next3dayForecastArray);
+    document.getElementById('lfitemp4right').innerText = dayArrayMinTemp(next4dayForecastArray);
+
+    document.getElementById('lfiicon1').setAttribute('src', `http://openweathermap.org/img/w/${next1dayForecastArray[4].weather[0].icon}.png`)
+    document.getElementById('lfiicon2').setAttribute('src', `http://openweathermap.org/img/w/${next2dayForecastArray[4].weather[0].icon}.png`)
+    document.getElementById('lfiicon3').setAttribute('src', `http://openweathermap.org/img/w/${next3dayForecastArray[4].weather[0].icon}.png`)
+    document.getElementById('lfiicon4').setAttribute('src', `http://openweathermap.org/img/w/${next4dayForecastArray[4].weather[0].icon}.png`)
 }
 
 const weekdayNumberToName = weekday => {
@@ -281,11 +345,46 @@ const monthNumberToName = month => {
     return month;
 }
 
-initiateWroclawMarked();
-prepareIconDivs();
-getWeatherNow();
-getWeatherForecast();
-setTimeout(leftContainerInject, 3000); //temporary
+const dayArrayMinTemp = array => {
+    let min = Infinity;
+    array.forEach(dataObj => {
+        if (dataObj.main.temp < min) min = dataObj.main.temp;
+    });
+    return Math.round(min);
+}
+
+const dayArrayMaxTemp = array => {
+    let max = -Infinity;
+    array.forEach(dataObj => {
+        if (dataObj.main.temp > max) max = dataObj.main.temp;
+    });
+    return Math.round(max);
+}
+
+const init = () => {
+    initiateWroclawMarked();
+    prepareIconDivs();
+    Promise.all([getWeatherNow(), getWeatherForecast()])
+        .then(() => {
+            leftContainerInject();
+            // add here
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
+init();
+setInterval(() => {
+    Promise.all([getWeatherNow(), getWeatherForecast()])
+        .then(() => {
+            leftContainerInject();
+            // add here
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}, 60000)
 
 //how to extract and use data - we don't use that in the project actually
 const currentWeatherWro = async () => {
