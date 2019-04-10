@@ -383,6 +383,36 @@ h1 {
     margin: 10px 0 5px;
 }
 
+.today{
+    font-size: 30px;
+    position: relative;
+}
+
+.fa-chevron-right{
+    font-size: 20px;
+    color: rgb(233, 204, 37);
+    transition: 1s;
+}
+
+#right-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.slider{
+    position: relative;
+    right: 170px;
+    top: 10px;
+    display: flex;
+}
+
+.temp{
+    position: relative;
+    left: 30px;
+    bottom: 12px;
+}
+
 @media (max-width: 750px) {
     body {
         display: flex;
