@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link href="icons/fontello-7e2cc386/css/fontello.css" rel="stylesheet" type="text/css">
-  <link href="icons/fontello-1ce90017/css/fontello.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+  <link href="icons/fontello-1ce90017/css/fontello.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -80,16 +80,26 @@
       </div>
     </article>
     <article class="right">
-      <div id="right-header"></div>
-      <!-- <div id="graph"> -->
+      <div id="right-header">
+        <div class="today">
+          Today
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="slider">
+          <div>
+            <input type="range" id="start" name="volume" min="0" max="11">
+          </div>
+          <p class="temp">
+            H 34 | L 26
+          </p>
+        </div>
+      </div>
       <canvas id="myChart" height="50"></canvas>
-      <!-- </div> -->
-      <div class="txt">
+      <div id="graph">
         <div id="paragraph1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a,
           scelerisque sed, lacinia in, mi. Cras vel lorem.
           Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at
-          risus.<br><br>Donec
-          venenatis, turpis vel hendrerit
+          risus.<br><br>Donec venenatis, turpis vel hendrerit
           interdum, dui ligula ultricies purus, sed posuere libero dui id orci.
         </div>
         <div id="paragraph2">Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu,
@@ -98,10 +108,10 @@
           consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi.
         </div>
       </div>
-      <p id="label">More Info</p>
       <div id="arrow">
-        <i class="fas fa-long-arrow-alt-right"></i>
         <div>
+          <div id="label">
+            <div>
     </article>
     <article class="left">
       <div class="left-place-weather">
