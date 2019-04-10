@@ -131,7 +131,7 @@ function markCity() {
     target.style.transform = 'scale(1.1)';
     target.children[1].style.textDecoration = 'underline';
     iconDivsArray.forEach((iconDiv) => {
-        if(iconDiv !== target) {
+        if (iconDiv !== target) {
             iconDiv.style.transform = 'scale(1)';
             iconDiv.children[1].style.textDecoration = 'none';
         }
@@ -185,7 +185,7 @@ const leftContainerInject = () => {
 
     let startIndex;
 
-    switch(weekday) {
+    switch (weekday) {
         case 1:
             next1day = 2;
             next2day = 3;
@@ -230,7 +230,7 @@ const leftContainerInject = () => {
             break;
     }
 
-    if(minute<10) minute = '0' + minute.toString();
+    if (minute < 10) minute = '0' + minute.toString();
 
     weekday = weekdayNumberToName(weekday);
     next1day = weekdayNumberToName(next1day);
@@ -251,37 +251,37 @@ const leftContainerInject = () => {
     document.getElementById('lfwday3').innerText = next3day;
     document.getElementById('lfwday4').innerText = next4day;
 
-    if(hour >= 0 && hour < 3) {
+    if (hour >= 0 && hour < 3) {
         startIndex = 7;
-    } else if(hour >=3 && hour < 6) {
+    } else if (hour >= 3 && hour < 6) {
         startIndex = 6;
-    } else if(hour >= 6 && hour < 9) {
+    } else if (hour >= 6 && hour < 9) {
         startIndex = 5;
-    } else if(hour >= 9 && hour < 12) {
+    } else if (hour >= 9 && hour < 12) {
         startIndex = 4
-    } else if(hour >= 12 && hour < 15) {
+    } else if (hour >= 12 && hour < 15) {
         startIndex = 3
-    } else if(hour >= 15 && hour < 18) {
+    } else if (hour >= 15 && hour < 18) {
         startIndex = 2;
-    } else if(hour >= 18 && hour < 21) {
+    } else if (hour >= 18 && hour < 21) {
         startIndex = 1;
-    } else if(hour >= 21 && hour < 24) {
+    } else if (hour >= 21 && hour < 24) {
         startIndex = 0;
     }
 
-    for(let i = startIndex; i <= startIndex + 7; i++) {
+    for (let i = startIndex; i <= startIndex + 7; i++) {
         next1dayForecastArray.push(currentCityWeatherForecast.list[i]);
     }
 
-    for(let i = startIndex + 8; i <= startIndex + 15; i++) {
+    for (let i = startIndex + 8; i <= startIndex + 15; i++) {
         next2dayForecastArray.push(currentCityWeatherForecast.list[i]);
     }
 
-    for(let i = startIndex + 16; i <= startIndex + 23; i++) {
+    for (let i = startIndex + 16; i <= startIndex + 23; i++) {
         next3dayForecastArray.push(currentCityWeatherForecast.list[i]);
     }
 
-    for(let i = startIndex + 24; i <= startIndex + 31; i++) {
+    for (let i = startIndex + 24; i <= startIndex + 31; i++) {
         next4dayForecastArray.push(currentCityWeatherForecast.list[i]);
     }
 
@@ -508,3 +508,51 @@ const currentWeatherWroDisplay_unused = async () => {
         console.log(err0);
     }
 }
+
+//graph
+
+var ctx = document.getElementById("myChart").getContext("2d");
+var gradient = ctx.createLinearGradient(0, 0, 800, 0);
+gradient.addColorStop(1, "rgba(250,174,50,0.8)");
+gradient.addColorStop(0, "rgba(200,14,50,0.8)");
+
+var chart = new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: ["2", "4", "6", "8", "10", "12", "14"],
+        datasets: [{
+            backgroundColor: gradient,
+            borderColor: "rgb(133, 5, 90, 0.5)",
+            data: [5, 10, 6, 8, 5, 10, 6, 8],
+            pointBackgroundColor: "rgb(50, 9, 12)"
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                position: "top",
+                stacked: true,
+                gridLines: {
+                    display: false
+                },
+                ticks: {
+                    fontColor: "#CCC",
+                }
+            }],
+            yAxes: [{
+                display: false,
+                stacked: true,
+                gridLines: {
+                    display: false
+                }
+            }]
+        },
+        tooltips: {
+            enabled: true,
+            backgroundColor: "rgb(133, 5, 90)"
+        },
+        legend: {
+            display: false
+        }
+    }
+});
