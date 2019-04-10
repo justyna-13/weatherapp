@@ -17,8 +17,8 @@ const currentWeatherWroDisplay = async () => {
         const wroType = document.querySelector(".wro~p.word");
         wroType.innerText = dataObj.weather[0].main;
 
-        const wroLeft = document.querySelector("i+p");
-        wroLeft.innerText = `${Math.round(dataObj.main.temp)}°C`;
+        // const wroLeft = document.querySelector("i+p");
+        // wroLeft.innerText = `${Math.round(dataObj.main.temp)}°C`;
 
     } catch (err0) {
         console.log(err0);
@@ -87,6 +87,7 @@ let next1dayForecastArray = []; // <-- feel free to use that :D
 let next2dayForecastArray = []; // <-- feel free to use that :D
 let next3dayForecastArray = []; // <-- feel free to use that :D
 let next4dayForecastArray = []; // <-- feel free to use that :D
+let thisDay = [];
 
 const iconDivsArray = Array.from(document.getElementsByClassName('city-icone'));
 
@@ -116,9 +117,11 @@ function changeCity() {
     next2dayForecastArray = [];
     next3dayForecastArray = [];
     next4dayForecastArray = [];
+    thisDay = [];
     Promise.all([getWeatherNow(), getWeatherForecast()])
         .then(() => {
             leftContainerInject();
+            createGraph();
             // add here
         })
         .catch((err) => {
@@ -269,6 +272,10 @@ const leftContainerInject = () => {
         startIndex = 0;
     }
 
+    for(let i = 0; i < startIndex; i++) {
+        thisDay.push(currentCityWeatherForecast.list[i]);
+    }
+
     for (let i = startIndex; i <= startIndex + 7; i++) {
         next1dayForecastArray.push(currentCityWeatherForecast.list[i]);
     }
@@ -394,6 +401,7 @@ const init = () => {
     Promise.all([getWeatherNow(), getWeatherForecast()])
         .then(() => {
             leftContainerInject();
+            createGraph();
             // add here
         })
         .catch((err) => {
@@ -409,6 +417,7 @@ setInterval(() => {
     Promise.all([getWeatherNow(), getWeatherForecast()])
         .then(() => {
             leftContainerInject();
+            createGraph();
             // add here
         })
         .catch((err) => {
@@ -511,48 +520,214 @@ const currentWeatherWroDisplay_unused = async () => {
 
 //graph
 
-var ctx = document.getElementById("myChart").getContext("2d");
-var gradient = ctx.createLinearGradient(0, 0, 800, 0);
-gradient.addColorStop(1, "rgba(250,174,50,0.8)");
-gradient.addColorStop(0, "rgba(200,14,50,0.8)");
+let next1temp;
+let next2temp;
+let next3temp;
+let next4temp;
+let next5temp;
+let next6temp;
+let next7temp;
 
-var chart = new Chart(ctx, {
-    type: "line",
-    data: {
-        labels: ["2", "4", "6", "8", "10", "12", "14"],
-        datasets: [{
-            backgroundColor: gradient,
-            borderColor: "rgb(133, 5, 90, 0.5)",
-            data: [5, 10, 6, 8, 5, 10, 6, 8],
-            pointBackgroundColor: "rgb(50, 9, 12)"
-        }]
-    },
-    options: {
-        scales: {
-            xAxes: [{
-                position: "top",
-                stacked: true,
-                gridLines: {
-                    display: false
-                },
-                ticks: {
-                    fontColor: "#CCC",
-                }
-            }],
-            yAxes: [{
-                display: false,
-                stacked: true,
-                gridLines: {
-                    display: false
-                }
+const createGraph = () => {
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var gradient = ctx.createLinearGradient(0, 0, 800, 0);
+    gradient.addColorStop(1, "rgba(250,174,50,0.8)");
+    gradient.addColorStop(0, "rgba(200,14,50,0.8)");
+
+    const date = new Date();
+    const hourG = date.getHours();
+
+    let next1hour;
+    let next2hour;
+    let next3hour;
+    let next4hour;
+    let next5hour;
+    let next6hour;
+    let next7hour;
+
+    if (hourG >= 0 && hourG < 3) {
+        next1hour = 3;
+        next2hour = 6;
+        next3hour = 9;
+        next4hour = 12;
+        next5hour = 15;
+        next6hour = 18;
+        next7hour = 21;
+
+        next1temp = Math.round(thisDay[0].main.temp);
+        next2temp = Math.round(thisDay[1].main.temp);
+        next3temp = Math.round(thisDay[2].main.temp);
+        next4temp = Math.round(thisDay[3].main.temp);
+        next5temp = Math.round(thisDay[4].main.temp);
+        next6temp = Math.round(thisDay[5].main.temp);
+        next7temp = Math.round(thisDay[6].main.temp);
+    } else if (hourG >= 3 && hourG < 6) {
+        next1hour = 6;
+        next2hour = 9;
+        next3hour = 12;
+        next4hour = 15;
+        next5hour = 18;
+        next6hour = 21;
+        next7hour = 0;
+
+        next1temp = Math.round(thisDay[0].main.temp);
+        next2temp = Math.round(thisDay[1].main.temp);
+        next3temp = Math.round(thisDay[2].main.temp);
+        next4temp = Math.round(thisDay[3].main.temp);
+        next5temp = Math.round(thisDay[4].main.temp);
+        next6temp = Math.round(thisDay[5].main.temp);
+        next7temp = Math.round(next1dayForecastArray[0].main.temp);
+    } else if (hourG >= 6 && hourG < 9) {
+        next1hour = 9;
+        next2hour = 12;
+        next3hour = 15;
+        next4hour = 18;
+        next5hour = 21;
+        next6hour = 0;
+        next7hour = 3;
+
+        next1temp = Math.round(thisDay[0].main.temp);
+        next2temp = Math.round(thisDay[1].main.temp);
+        next3temp = Math.round(thisDay[2].main.temp);
+        next4temp = Math.round(thisDay[3].main.temp);
+        next5temp = Math.round(thisDay[4].main.temp);
+        next6temp = Math.round(next1dayForecastArray[0].main.temp);
+        next7temp = Math.round(next1dayForecastArray[1].main.temp);
+    } else if (hourG >= 9 && hourG < 12) {
+        next1hour = 12;
+        next2hour = 15;
+        next3hour = 18;
+        next4hour = 21;
+        next5hour = 0;
+        next6hour = 3;
+        next7hour = 6;
+
+        next1temp = Math.round(thisDay[0].main.temp);
+        next2temp = Math.round(thisDay[1].main.temp);
+        next3temp = Math.round(thisDay[2].main.temp);
+        next4temp = Math.round(thisDay[3].main.temp);
+        next5temp = Math.round(next1dayForecastArray[0].main.temp);
+        next6temp = Math.round(next1dayForecastArray[1].main.temp);
+        next7temp = Math.round(next1dayForecastArray[2].main.temp);
+    } else if (hourG >= 12 && hourG < 15) {
+        next1hour = 15;
+        next2hour = 18;
+        next3hour = 21;
+        next4hour = 0;
+        next5hour = 3;
+        next6hour = 6;
+        next7hour = 9;
+
+        next1temp = Math.round(thisDay[0].main.temp);
+        next2temp = Math.round(thisDay[1].main.temp);
+        next3temp = Math.round(thisDay[2].main.temp);
+        next4temp = Math.round(next1dayForecastArray[0].main.temp);
+        next5temp = Math.round(next1dayForecastArray[1].main.temp);
+        next6temp = Math.round(next1dayForecastArray[2].main.temp);
+        next7temp = Math.round(next1dayForecastArray[3].main.temp);
+    } else if (hourG >= 15 && hourG < 18) {
+        next1hour = 18;
+        next2hour = 21;
+        next3hour = 0;
+        next4hour = 3;
+        next5hour = 6;
+        next6hour = 9;
+        next7hour = 12;
+
+        next1temp = Math.round(thisDay[0].main.temp);
+        next2temp = Math.round(thisDay[1].main.temp);
+        next3temp = Math.round(next1dayForecastArray[0].main.temp);
+        next4temp = Math.round(next1dayForecastArray[1].main.temp);
+        next5temp = Math.round(next1dayForecastArray[2].main.temp);
+        next6temp = Math.round(next1dayForecastArray[3].main.temp);
+        next7temp = Math.round(next1dayForecastArray[4].main.temp);
+    } else if (hourG >= 18 && hourG < 21) {
+        next1hour = 21;
+        next2hour = 0;
+        next3hour = 3;
+        next4hour = 6;
+        next5hour = 9;
+        next6hour = 12;
+        next7hour = 15;
+
+        next1temp = Math.round(thisDay[0].main.temp);
+        next2temp = Math.round(next1dayForecastArray[0].main.temp);
+        next3temp = Math.round(next1dayForecastArray[1].main.temp);
+        next4temp = Math.round(next1dayForecastArray[2].main.temp);
+        next5temp = Math.round(next1dayForecastArray[3].main.temp);
+        next6temp = Math.round(next1dayForecastArray[4].main.temp);
+        next7temp = Math.round(next1dayForecastArray[5].main.temp);
+    } else if (hourG >= 21 && hourG < 24) {
+        next1hour = 0;
+        next2hour = 3;
+        next3hour = 6;
+        next4hour = 9;
+        next5hour = 12;
+        next6hour = 15;
+        next7hour = 16;
+
+        next1temp = Math.round(next1dayForecastArray[0].main.temp);
+        next2temp = Math.round(next1dayForecastArray[1].main.temp);
+        next3temp = Math.round(next1dayForecastArray[2].main.temp);
+        next4temp = Math.round(next1dayForecastArray[3].main.temp);
+        next5temp = Math.round(next1dayForecastArray[4].main.temp);
+        next6temp = Math.round(next1dayForecastArray[5].main.temp);
+        next7temp = Math.round(next1dayForecastArray[6].main.temp);
+    }
+
+    if(window.bar != undefined) {
+        window.bar.destroy();
+    }
+    window.bar = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [`${next1hour}`, `${next2hour}`, `${next3hour}`, `${next4hour}`, `${next5hour}`, `${next6hour}`, `${next7hour}`],
+            datasets: [{
+                backgroundColor: gradient,
+                borderColor: "rgb(133, 5, 90, 0.5)",
+                data: [next1temp, next2temp, next3temp, next4temp, next5temp, next6temp, next7temp],
+                pointBackgroundColor: "rgb(50, 9, 12)"
             }]
         },
-        tooltips: {
-            enabled: true,
-            backgroundColor: "rgb(133, 5, 90)"
-        },
-        legend: {
-            display: false
+        options: {
+            scales: {
+                xAxes: [{
+                    position: "top",
+                    stacked: true,
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        fontColor: "#CCC",
+                        fontSize: '16',
+                        fontFamily: 'Montserrat'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    stacked: true,
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        min: -5,
+                        max: 20,
+                        fontFamily: 'Montserrat'
+                    }
+                }]
+            },
+            tooltips: {
+                enabled: true,
+                backgroundColor: "rgb(133, 5, 90)"
+            },
+            legend: {
+                display: false
+            },
+            maintainAspectRatio: false
         }
-    }
-});
+    });
+    canvas = document.querySelector('canvas');
+    canvas.style.height = '250px';
+    canvas.style.maxHeight = '250px';
+    canvas.setAttribute('pointer-events', 'none');
+}
