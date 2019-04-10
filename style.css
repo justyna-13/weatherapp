@@ -194,6 +194,8 @@ p:nth-of-type(3) {
     font-weight: lighter;
     grid-area: 4 / 2 / 5 / -1;
     margin-top: 0px;
+    justify-self: end;
+    margin-right: 10px;
 }
 
 #arrow {
@@ -207,6 +209,9 @@ p:nth-of-type(3) {
     font-size:30px;
     font-weight: lighter;
     grid-area: 5 / 2 / -1 / -1;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 10px;
 }
 
 .left {

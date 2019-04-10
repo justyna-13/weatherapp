@@ -1,3 +1,30 @@
+const currentWeatherWro = async () => {
+    try {
+        const dataRespsonse = await fetch("http://api.openweathermap.org/data/2.5/weather?q=Wroclaw,pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
+        return dataRespsonse.json();
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const currentWeatherWroDisplay = async () => {
+    try {
+        const dataObj = await currentWeatherWro();
+
+        const wroHeader = document.querySelector(".wro~p.deg");
+        wroHeader.innerText = `${Math.round(dataObj.main.temp)}°C`;
+
+        const wroType = document.querySelector(".wro~p.word");
+        wroType.innerText = dataObj.weather[0].main;
+
+        const wroLeft = document.querySelector("i+p");
+        wroLeft.innerText = `${Math.round(dataObj.main.temp)}°C`;
+
+    } catch (err0) {
+        console.log(err0);
+    }
+}
+
 //Other cities
 
 const otherCities = async () => {
@@ -39,8 +66,6 @@ const currentWeatherOtherDisplay = async () => {
         console.log(er);
     }
 }
-
-currentWeatherOtherDisplay();
 
 /*Left bar*/
 function iconClick(e) {
@@ -364,6 +389,8 @@ const dayArrayMaxTemp = array => {
 const init = () => {
     initiateWroclawMarked();
     prepareIconDivs();
+    currentWeatherWroDisplay();
+    currentWeatherOtherDisplay();
     Promise.all([getWeatherNow(), getWeatherForecast()])
         .then(() => {
             leftContainerInject();
@@ -375,7 +402,10 @@ const init = () => {
 }
 
 init();
+
 setInterval(() => {
+    currentWeatherWroDisplay();
+    currentWeatherOtherDisplay();
     Promise.all([getWeatherNow(), getWeatherForecast()])
         .then(() => {
             leftContainerInject();
@@ -387,7 +417,7 @@ setInterval(() => {
 }, 60000)
 
 //how to extract and use data - we don't use that in the project actually
-const currentWeatherWro = async () => {
+const currentWeatherWro_unused = async () => {
     try {
         const dataRespsonse = await fetch("http://api.openweathermap.org/data/2.5/weather?q=Wroclaw,pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
         return dataRespsonse.json();
@@ -415,7 +445,7 @@ const forecastWroDisplay = async () => {
     }
 }
 
-const currentWeatherWroDisplay = async () => {
+const currentWeatherWroDisplay_unused = async () => {
     try {
         const dataObj = await currentWeatherWro();
 
