@@ -139,10 +139,55 @@ const leftContainerInject = () => {
     let minute = date.getMinutes();
     let month = date.getMonth();
     let weekday = date.getDay();
-    let next1day = (weekday+1)%7;
-    let next2day = (weekday+2)%7;
-    let next3day = (weekday+3)%7;
-    let next4day = (weekday+4)%7;
+    let next1day;
+    let next2day;
+    let next3day;
+    let next4day;
+
+    switch(weekday) {
+        case 1:
+            next1day = 2;
+            next2day = 3;
+            next3day = 4;
+            next4day = 5;
+            break;
+        case 2:
+            next1day = 3;
+            next2day = 4;
+            next3day = 5;
+            next4day = 6;
+            break;
+        case 3:
+            next1day = 4;
+            next2day = 5;
+            next3day = 6;
+            next4day = 7;
+            break;
+        case 4:
+            next1day = 5;
+            next2day = 6;
+            next3day = 7;
+            next4day = 1;
+            break;
+        case 5:
+            next1day = 6;
+            next2day = 7;
+            next3day = 1;
+            next4day = 2;
+            break;
+        case 6:
+            next1day = 7;
+            next2day = 1;
+            next3day = 2;
+            next4day = 3;
+            break;
+        case 7:
+            next1day = 1;
+            next2day = 2;
+            next3day = 3;
+            next4day = 4;
+            break;
+    }
 
     if(minute<10) minute = '0' + minute.toString();
 
