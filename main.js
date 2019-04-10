@@ -389,11 +389,11 @@ const dayArrayMaxTemp = array => {
 const init = () => {
     initiateWroclawMarked();
     prepareIconDivs();
+    currentWeatherWroDisplay();
+    currentWeatherOtherDisplay();
     Promise.all([getWeatherNow(), getWeatherForecast()])
         .then(() => {
             leftContainerInject();
-            currentWeatherWroDisplay();
-            currentWeatherOtherDisplay();
             // add here
         })
         .catch((err) => {
@@ -404,11 +404,11 @@ const init = () => {
 init();
 
 setInterval(() => {
+    currentWeatherWroDisplay();
+    currentWeatherOtherDisplay();
     Promise.all([getWeatherNow(), getWeatherForecast()])
         .then(() => {
             leftContainerInject();
-            currentWeatherWroDisplay();
-            currentWeatherOtherDisplay();
             // add here
         })
         .catch((err) => {
