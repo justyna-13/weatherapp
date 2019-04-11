@@ -1,6 +1,6 @@
 const currentWeatherWro = async () => {
     try {
-        const dataRespsonse = await fetch("http://api.openweathermap.org/data/2.5/weather?q=Wroclaw,pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
+        const dataRespsonse = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Wroclaw,pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
         return dataRespsonse.json();
     } catch (err) {
         console.log(err);
@@ -29,7 +29,7 @@ const currentWeatherWroDisplay = async () => {
 
 const otherCities = async () => {
     try {
-        const dataRes = await fetch("http://api.openweathermap.org/data/2.5/group?id=7530858,6695624,7531002,3094802&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
+        const dataRes = await fetch("https://api.openweathermap.org/data/2.5/group?id=7530858,6695624,7531002,3094802&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
         return dataRes.json();
     } catch (err) {
         console.log(err);
@@ -156,7 +156,7 @@ function initiateWroclawMarked() {
 
 const getWeatherNow = async () => {
     try {
-        const dataResponse = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${currentCity},pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5`);
+        const dataResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity},pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5`);
         const dataObj = await dataResponse.json();
         currentCityWeatherNow = dataObj;
     } catch (err) {
@@ -166,7 +166,7 @@ const getWeatherNow = async () => {
 
 const getWeatherForecast = async () => {
     try {
-        const dataResponse = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${currentCity},pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5`);
+        const dataResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currentCity},pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5`);
         const dataObj = await dataResponse.json();
         currentCityWeatherForecast = dataObj;
     } catch (err) {
@@ -247,7 +247,7 @@ const leftContainerInject = () => {
     document.getElementById('left-currentweather-hour').innerText = `${hour}:${minute}`;
     document.getElementById('left-currentweather-date').innerText = `${date.getDate()} ${month}`;
     document.getElementById('left-currentweather-weekday').innerText = weekday;
-    document.getElementById('left-currentweather-icon').setAttribute('src', `http://openweathermap.org/img/w/${currentCityWeatherNow.weather[0].icon}.png`);
+    document.getElementById('left-currentweather-icon').setAttribute('src', `https://openweathermap.org/img/w/${currentCityWeatherNow.weather[0].icon}.png`);
     document.getElementById('left-currrentweather-temp').innerText = `${Math.round(currentCityWeatherNow.main.temp)} °C`;
     document.getElementById('lfwday1').innerText = next1day;
     document.getElementById('lfwday2').innerText = next2day;
@@ -302,10 +302,10 @@ const leftContainerInject = () => {
     document.getElementById('lfitemp3right').innerText = dayArrayMinTemp(next3dayForecastArray);
     document.getElementById('lfitemp4right').innerText = dayArrayMinTemp(next4dayForecastArray);
 
-    document.getElementById('lfiicon1').setAttribute('src', `http://openweathermap.org/img/w/${next1dayForecastArray[4].weather[0].icon}.png`)
-    document.getElementById('lfiicon2').setAttribute('src', `http://openweathermap.org/img/w/${next2dayForecastArray[4].weather[0].icon}.png`)
-    document.getElementById('lfiicon3').setAttribute('src', `http://openweathermap.org/img/w/${next3dayForecastArray[4].weather[0].icon}.png`)
-    document.getElementById('lfiicon4').setAttribute('src', `http://openweathermap.org/img/w/${next4dayForecastArray[4].weather[0].icon}.png`)
+    document.getElementById('lfiicon1').setAttribute('src', `https://openweathermap.org/img/w/${next1dayForecastArray[4].weather[0].icon}.png`)
+    document.getElementById('lfiicon2').setAttribute('src', `https://openweathermap.org/img/w/${next2dayForecastArray[4].weather[0].icon}.png`)
+    document.getElementById('lfiicon3').setAttribute('src', `https://openweathermap.org/img/w/${next3dayForecastArray[4].weather[0].icon}.png`)
+    document.getElementById('lfiicon4').setAttribute('src', `https://openweathermap.org/img/w/${next4dayForecastArray[4].weather[0].icon}.png`)
 }
 
 const weekdayNumberToName = weekday => {
@@ -428,7 +428,7 @@ setInterval(() => {
 //how to extract and use data - we don't use that in the project actually
 const currentWeatherWro_unused = async () => {
     try {
-        const dataRespsonse = await fetch("http://api.openweathermap.org/data/2.5/weather?q=Wroclaw,pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
+        const dataRespsonse = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Wroclaw,pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
         return dataRespsonse.json();
     } catch (err) {
         console.log(err);
@@ -437,7 +437,7 @@ const currentWeatherWro_unused = async () => {
 
 const forecastWro = async () => {
     try {
-        const dataResponse = await fetch("http://api.openweathermap.org/data/2.5/forecast?q=Wroclaw,pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
+        const dataResponse = await fetch("https://api.openweathermap.org/data/2.5/forecast?q=Wroclaw,pl&units=metric&APPID=758ec9f74b2a9503848090a6f46944c5");
         return dataResponse.json();
     } catch (err) {
         console.log(err);
