@@ -454,20 +454,22 @@ h1 {
 #right-header {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
 }
 
 .slider {
-    position: relative;
-    right: 170px;
-    top: 10px;
     display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.temp {
-    position: relative;
-    left: 30px;
-    bottom: 12px;
+.slider input {
+    margin-right: 20px;
+}
+
+#right-header .temp {
+    margin-top: 0px;
 }
 
 @media (max-width: 750px) {
