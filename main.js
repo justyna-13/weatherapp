@@ -664,7 +664,7 @@ const createGraph = () => {
         next4hour = 9;
         next5hour = 12;
         next6hour = 15;
-        next7hour = 16;
+        next7hour = 18;
 
         next1temp = Math.round(next1dayForecastArray[0].main.temp);
         next2temp = Math.round(next1dayForecastArray[1].main.temp);
